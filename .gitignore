@@ -5,6 +5,9 @@
 /public/storage
 /storage/*.key
 /vendor
+/public/magazines
+/public/magazine_cover
+/public/slides
 .env
 .env.backup
 .env.production
