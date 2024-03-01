@@ -187,23 +187,45 @@
 
                                         <div class="row">
                                             <div class=" col-3">
-                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{'yourloveworldspecials.org/'.session('user')->username}}" class="badge btn-facebook"><i class="fab fa-facebook-f"></i></a>
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{'thewatchersnetwork.org/'.session('user')->username}}" class="badge btn-facebook"><i class="fab fa-facebook-f"></i></a>
 
                                             </div>
                                             <div class=" col-3">
-                                                <a href="https://twitter.com/intent/tweet?text=View+my+products&url={{'yourloveworldspecials.org/'.session('user')->username}}" class="badge btn-twitter"><i class="fab fa-twitter"></i></a>
+                                                <a href="https://twitter.com/intent/tweet?text=View+my+products&url={{'thewatchersnetwork.org/'.session('user')->username}}" class="badge btn-twitter"><i class="fab fa-twitter"></i></a>
 
                                             </div>
                                             <div class="col-3">
-                                                <a href="https://wa.me/?text={{'yourloveworldspecials.org/'.session('user')->username}}" class="badge btn-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                                                <a href="https://wa.me/?text={{'thewatchersnetwork.org/'.session('user')->username}}" class="badge btn-whatsapp"><i class="fab fa-whatsapp"></i></a>
 
                                             </div>
                                             <div class=" col-3">
-                                                <a href="https://telegram.me/share/url?url={{'yourloveworldspecials.org/'.session('user')->username}}" class="badge btn-twitter"><i class="fab fa-telegram"></i></a>
+                                                <a href="https://telegram.me/share/url?url={{'thewatchersnetwork.org/'.session('user')->username}}" class="badge btn-twitter"><i class="fab fa-telegram"></i></a>
 
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12 col-md-12">
+                            <div class="items">
+                                <div class="widget-stat card">
+                                    <a href="{{route('participants')}}">
+                                        <div class="card-body p-4 btn-danger" >
+                                            <div class="media ai-icon">
+									<span class="me-3 bgl-danger text-danger">
+										<i class="fas fa-users"></i>
+
+									</span>
+                                                <div class="media-body">
+                                                    <p class="mb-1 text-white">My Downloads</p>
+                                                    <h4 class="mb-0 text-white">{{$participants->count()}}</h4>
+                                                    <span class="badge bg-danger float-end">VIEW</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
                                 </div>
                             </div>
                         </div>
@@ -362,7 +384,7 @@
                              <div class="div mb-3">
                                                             <p hidden id="magazine">{{route('mag',session('user')->username)}}</p>
                                 <button class="btn btn-primary btn-lg btn-block" onclick="copyToClipboard('Thanks',' Magazine Download Link has been copied','success','#magazine')">
-                                    <i class="fas fa-download"></i> My Download Link
+                                    <i class="fas fa-download"></i> Magazine Download Link
                                 </button>
                             </div>
                             <div class="div mb-3">

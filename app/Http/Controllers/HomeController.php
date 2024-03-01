@@ -99,7 +99,7 @@ class HomeController extends Controller
         $data['meetings'] = $programmes;
         $referer = session('referral.id');
         $data['upline'] = User::where('id',$referer)->first();
-//        $data['download'] = Magazine::where('status','Active')->first();
+        $data['download'] = Magazine::where('status','Active')->first();
         $data['slides'] = Slide::all();
         $data['referrals'] = User::where('referral_id',$id)->get();
         $data['participants'] = Participant::where('referral_id',$id)->get();
@@ -117,40 +117,30 @@ class HomeController extends Controller
 
     public function downloadMagazine($username)
     {
+
         $user = User::whereUsername($username)->firstOrFail();
-        //FETCH MAGAZINE FROM DB
-        $mag = Magazine::where('status','Active')->first();
+        $magazine = Magazine::where('status', 'active')->firstOrFail();
+        $ipAddress = request()->ip();
 
+        $existingDownload = Download::where('mag_id', $magazine->id)
+            ->where('user_id',$user->id)
+            ->where('ip_address', $ipAddress)
+            ->first();
 
-        $unique = Download::where('mag_id',$mag->id)->
-        where('user_id', Auth::user()->id)->
-        where('referral_id', $user->id);
-
-        if($unique->count()==0) {
-
+        if (!$existingDownload) {
+            // Create a new download entry for the user
             $download = new Download();
-            $download->mag_id = $mag->id;
-            $download->referral_id = $user->id;
-            $download->user_id = Auth::user()->id;
+            $download->mag_id = $magazine->id;
+            $download->user_id = $user->id;
+            $download->ip_address = $ipAddress;
             $download->save();
-            $magazine = Download::where('mag_id',$mag->id)->get();
-            $mag->update(['download_count' => $magazine->count()]);
-            $file =  json_decode($mag->file, true);
-
-            //GET MAGAZINE PATH
-            $pathToFile = 'storage/'.$file[0]['download_link'];
-            $pathToFile = str_replace('\\', '/', $pathToFile);
-            $filename = basename($pathToFile);
-            return response()->download($pathToFile, $filename);
 
 
-
+            // Update the download count for the magazine
+            $magazine->increment('download_count');
         }
-        $file =  json_decode($mag->file, true);
-        $pathToFile = 'storage/'.$file[0]['download_link'];
-        $pathToFile = str_replace('\\', '/', $pathToFile);
-        $filename = basename($pathToFile);
-        return response()->download($pathToFile, $filename);
+        return response()->download($magazine->file);
+
 
     }
 
@@ -164,7 +154,7 @@ class HomeController extends Controller
             $token = new FirebaseToken();
         }
 
-        $id = Auth::user()->id;
+        $id = session('user.id');
         $token->user_id = $id;
         $token->token = $request->newtoken;
         $token->save();

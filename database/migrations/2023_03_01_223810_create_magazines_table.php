@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('month');
             $table->string('image');
             $table->string('file');
+            $table->string('status')->nullable();
+            $table->string('download_count')->default(0);
             $table->timestamps();
         });
     }

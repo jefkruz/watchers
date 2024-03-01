@@ -15,28 +15,23 @@ class User extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
     protected $guarded;
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-
+    public function downloads()
+    {
+        return $this->hasMany(Download::class);
+    }
 
     public function level()
     {
-        $id = Auth::user()->id;
+        $id = session('user.id');
         $referral = User::where('referral_id',$id)->get();
         $referrals = $referral->count();
         if ($referrals >= '10000')
@@ -60,7 +55,7 @@ class User extends Model
 
     public function color()
     {
-        $id = Auth::user()->id;
+        $id = session('user.id');
         $referral = User::where('referral_id',$id)->get();
         $referrals = $referral->count();
         if ($referrals >= '10000')
