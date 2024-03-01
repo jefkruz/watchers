@@ -103,6 +103,7 @@ class HomeController extends Controller
         $data['slides'] = Slide::all();
         $data['referrals'] = User::where('referral_id',$id)->get();
         $data['participants'] = Participant::where('referral_id',$id)->get();
+        $data['myDownloads'] = Download::where('user_id',$id)->get();
 
         return view('influencers.home', $data);
     }
@@ -142,6 +143,16 @@ class HomeController extends Controller
         return response()->download($magazine->file);
 
 
+    }
+
+    public function downloadCount()
+    {
+        $data['notifications'] = WebNotificationsController::fetchLatestNotifications();
+        $id = session('user.id');
+        $data['page_title'] = 'My Downloads';
+        $data['i'] = 1;
+        $data['downloads'] = Download::where('user_id',$id)->get();
+        return view('influencers.downloads',$data);
     }
 
     public function saveToken(Request $request)

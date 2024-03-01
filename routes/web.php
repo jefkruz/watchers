@@ -116,6 +116,7 @@ Route::group(['middleware' => 'isLoggedIn'], function() {
     Route::patch('profile', [HomeController::class, 'updateProfile'])->name('updateProfile');
     Route::get('referral', [HomeController::class, 'referrals'])->name('referrals');
     Route::get('participants', [HomeController::class, 'participants'])->name('participants');
+    Route::get('downloads/count', [HomeController::class, 'downloadCount'])->name('downloadsCount');
     Route::get('referral/{username}', [HomeController::class, 'viewreferral'])->name('view');
     Route::get('trainings/trending', [CoursesController::class, 'trendingCourses'])->name('trendingCourses');
     Route::get('trainings/general', [CoursesController::class, 'generalCourses'])->name('generalCourses');

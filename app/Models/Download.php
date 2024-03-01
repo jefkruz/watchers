@@ -19,4 +19,9 @@ class Download extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function mag()
+    {
+        return $this->belongsTo(Magazine::class);
+    }
 }

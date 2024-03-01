@@ -210,7 +210,7 @@
                         <div class="col-xl-12 col-md-12">
                             <div class="items">
                                 <div class="widget-stat card">
-                                    <a href="{{route('participants')}}">
+                                    <a href="{{route('downloadsCount')}}">
                                         <div class="card-body p-4 btn-danger" >
                                             <div class="media ai-icon">
 									<span class="me-3 bgl-danger text-danger">
@@ -219,7 +219,7 @@
 									</span>
                                                 <div class="media-body">
                                                     <p class="mb-1 text-white">My Downloads</p>
-                                                    <h4 class="mb-0 text-white">{{$participants->count()}}</h4>
+                                                    <h4 class="mb-0 text-white">{{$myDownloads->count()}}</h4>
                                                     <span class="badge bg-danger float-end">VIEW</span>
                                                 </div>
                                             </div>
