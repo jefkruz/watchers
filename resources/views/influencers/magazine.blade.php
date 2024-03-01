@@ -16,7 +16,6 @@
                         <div class="new-arrival-content text-center mt-3">
                             <h4>{{ucwords($magazine->month)}}</h4>
 
-                              
                                       <a  href="{{asset($magazine->file)}}" download="{{$magazine->file}}" class="btn btn-rounded btn-warning"><span class="btn-icon-start text-warning"><i class="fa fa-download color-warning"></i>
                                     </span>Download</a>
 

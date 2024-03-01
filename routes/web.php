@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CampusController;
+use App\Http\Controllers\MagazineController;
 use App\Http\Controllers\ZoneController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -194,6 +195,12 @@ Route::group(['middleware' => 'isAdmin', 'prefix' => 'pilot'], function(){
         Route::get('/', [SlidesController::class, 'index'])->name('slides.index');
         Route::post('/', [SlidesController::class, 'store'])->name('slides.store');
         Route::delete('{id}', [SlidesController::class, 'delete'])->name('slides.delete');
+    });
+
+    Route::group(['prefix' => 'magazine'], function(){
+        Route::get('/', [MagazineController::class, 'index'])->name('magazines.index');
+        Route::post('/', [MagazineController::class, 'store'])->name('magazines.store');
+        Route::delete('{id}', [MagazineController::class, 'delete'])->name('magazines.delete');
     });
 
     Route::group(['prefix' => 'trainings'], function(){

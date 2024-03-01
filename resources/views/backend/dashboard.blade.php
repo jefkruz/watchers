@@ -156,6 +156,21 @@
             </div>
         </div>
 
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-blue">
+                <div class="inner">
+                    <h3>{{$posts}}</h3>
+
+                    <p>Magazines</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-file-pdf"></i>
+                </div>
+                <a href="{{route('magazines.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
     </div>
     @endsection
 
