@@ -160,7 +160,7 @@
             <!-- small box -->
             <div class="small-box bg-gradient-blue">
                 <div class="inner">
-                    <h3>{{$posts}}</h3>
+                    <h3>{{$magazines}}</h3>
 
                     <p>Magazines</p>
                 </div>

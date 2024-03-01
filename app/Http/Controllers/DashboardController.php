@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Campus;
+use App\Models\Magazine;
 use App\Models\Meeting;
 use App\Models\Participant;
 use App\Models\ResourcePost;
@@ -34,6 +35,7 @@ class DashboardController extends Controller
         $data['staffs'] = User::count();
         $data['teamHeads'] = TeamHead::count();
         $data['slides'] = Slide::count();
+        $data['magazines'] = Magazine::count();
         $data['posts'] = ResourcePost::count();
         $data['participants'] = Participant::count();
 //        $data['forums'] = Forum::count();
