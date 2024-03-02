@@ -52,6 +52,7 @@
                         <div class="col-xl-12 col-xxl-12">
                             <div class="card">
                                 <div class="card-body p-4">
+                                    {{$video}}
                                         <h4 class="card-intro-title mb-4">Video of the day</h4>
                                     <video id="videoPlay"  class="video-js vjs-default-skin">
 
