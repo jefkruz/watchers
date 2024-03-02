@@ -52,36 +52,6 @@ class HomeController extends Controller
         return view('directories', $data);
     }
 
-    public function notify()
-    {
-        $url ="https://fcm.googleapis.com/fcm/send";
-
-        $fields=array(
-            "to"=> "cX0RHboHrMENJ9X0hk33ag:APA91bEiI5iTO4L3H69h5vBqqfLk2dOHJnhvubqufi6yweEQdnDLosgQ_rAR7fcGEpDwwqwZ0GuMPgTFruPda9ZvN1Uy6vf_ETUNKfrOkK5zyc5_GABdfayeQeqCLBY2d8Wr-FyAM7qR",
-            "notification"=>array(
-                "body"=>"Hello this is a test",
-                "title"=>"New Notification",
-                "icon"=>"https://yourloveworldspecials.org/images/favicon.png",
-                "click_action"=>"https://yourloveworldspecials.org"
-            )
-        );
-
-        $headers=array(
-            'Authorization: key=AAAA0-tAPuo:APA91bFi54FlkX18cPTxSDzaTXUT5gI_BPSppB83eZcw1P2tF-vXMP092MhgHYAvF7_ep4Un78VHr5nLV0lKlhKiF1Oa-KZCXNfd3Az81fGDSbKzGfqzzN9KINyNc5t51pjbFr3fcsKT',
-            'Content-Type:application/json'
-        );
-
-        $ch=curl_init();
-        curl_setopt($ch,CURLOPT_URL,$url);
-        curl_setopt($ch,CURLOPT_POST,true);
-        curl_setopt($ch,CURLOPT_HTTPHEADER,$headers);
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-        curl_setopt($ch,CURLOPT_POSTFIELDS,json_encode($fields));
-        $result=curl_exec($ch);
-//        print_r($result);
-        curl_close($ch);
-
-    }
 
     public function index()
     {

@@ -25,7 +25,7 @@
                             <div class="col-md-12 mb-5" id="previewNotif" style="display: none">
                                 <span>Preview</span>
                                 <div class="media" style="border: 3px dotted grey">
-                                    <img class="mr-3" src="{{url('images/favicon.png')}}" alt="Generic placeholder image">
+                                    <img class="mr-3" src="{{url('images/logo.png')}}" alt="Generic placeholder image">
                                     <div class="media-body">
                                         <h5 class="mt-0" id="titleDisplay"></h5>
                                         <span id="bodyDisplay"></span>
