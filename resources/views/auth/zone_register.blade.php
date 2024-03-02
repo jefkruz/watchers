@@ -12,7 +12,6 @@
     <meta property="og:title" content="The Watchers influencers network" />
     <meta property="og:description" content="The Watchers influencers network" />
     <meta name="format-detection" content="telephone=no">
-    <link rel="manifest" href="/manifest.json">
 
 
     <!-- CSRF Token -->
@@ -28,7 +27,7 @@
     <link href="{{asset('main/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
     <link href="{{asset('main/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('main/vendor/owl-carousel/owl.carousel.css')}}" rel="stylesheet">
-    @laravelPWA
+
 
 </head>
 <body class="h-100">

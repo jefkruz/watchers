@@ -175,7 +175,7 @@
             <!-- small box -->
             <div class="small-box bg-gradient-dark">
                 <div class="inner">
-                    <h3>0</h3>
+                    <h3>{{$notifiers}}</h3>
 
                     <p>Push Notifications</p>
                 </div>

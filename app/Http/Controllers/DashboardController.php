@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Campus;
+use App\Models\FirebaseToken;
 use App\Models\Magazine;
 use App\Models\Meeting;
 use App\Models\Participant;
@@ -33,6 +34,7 @@ class DashboardController extends Controller
         $month = date('n');
         $data['birthdays'] = User::where('birth_month',$month)->get();
         $data['staffs'] = User::count();
+        $data['notifiers'] = FirebaseToken::count();
         $data['teamHeads'] = TeamHead::count();
         $data['slides'] = Slide::count();
         $data['magazines'] = Magazine::count();
