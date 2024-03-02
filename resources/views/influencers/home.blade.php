@@ -2,7 +2,7 @@
 
 
 @section('datastyles')
-    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+    <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -457,7 +457,7 @@
 @endsection
 @section('datascripts')
 
-    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+    <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
 
     <script>
 {{--//VIDEO OF THE DAY SCRIPT--}}
@@ -479,9 +479,13 @@
 {{--        });--}}
 
 // LIVE STREAM SCRIPT
+
+
+
         let liveStream = videojs('liveStream', {
             controls: true,
-            fluid: true
+            fluid: true,
+            liveui: true
         });
 
             const stream = '{{$stream->link}}';

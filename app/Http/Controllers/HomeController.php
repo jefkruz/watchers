@@ -101,6 +101,7 @@ class HomeController extends Controller
         $data['upline'] = User::where('id',$referer)->first();
         $data['download'] = Magazine::where('status','Active')->first();
         $data['slides'] = Slide::all();
+        $data['stream'] = Stream::find(2);
         $data['referrals'] = User::where('referral_id',$id)->get();
         $data['participants'] = Participant::where('referral_id',$id)->get();
         $data['myDownloads'] = Download::where('user_id',$id)->get();

@@ -121,7 +121,7 @@ class WebNotificationsController extends Controller
                 "body"=> $request->body,
                 "title"=> $request->title,
                 "icon"=> url('images/favicon.png'),
-                "click_action"=> route('dashboard')
+                "click_action"=> route('home')
             )
         );
 

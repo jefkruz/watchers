@@ -8,6 +8,7 @@
 /public/magazines
 /public/magazine_cover
 /public/slides
+/public/firebase-messaging-sw.js
 .env
 .env.backup
 .env.production
