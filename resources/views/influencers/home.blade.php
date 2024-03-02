@@ -52,10 +52,10 @@
                         <div class="col-xl-12 col-xxl-12">
                             <div class="card">
                                 <div class="card-body p-4">
-                                    {{$video}}
-                                        <h4 class="card-intro-title mb-4">Video of the day</h4>
-                                    <video id="videoPlay"  class="video-js vjs-default-skin">
 
+                                        <h4 class="card-intro-title mb-4">Video of the day</h4>
+                                    <video id="video" class="video-js">
+                                        <source src="{{url($video->link)}}" type="video/mp4">
                                     </video>
 
                                 </div>
@@ -472,23 +472,17 @@
     <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
 
     <script>
-//VIDEO OF THE DAY SCRIPT
-        let videoPlayer = videojs('videoPlay', {
+
+        const player = videojs('video', {
             controls: true,
-            fluid: true
+            fluid: true,
+            liveui: true
+        });
+        player.on('contextmenu', function (e) {
+            // Prevent the default right-click context menu
+            e.preventDefault();
         });
 
-        const link = '{{$video->link}}';
-
-        const segments = link.split('.');
-        const extension = segments[segments.length - 1];
-
-        const type = (extension === 'm3u8') ? 'application/x-mpegURL' : 'video/mp4';
-
-        videoPlayer.src({
-            src: '{{$video->link}}',
-            type: type
-        });
 
 // LIVE STREAM SCRIPT
 
