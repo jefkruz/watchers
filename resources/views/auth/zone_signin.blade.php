@@ -19,7 +19,7 @@
 
     <title>{{$page_title ?? ' '}}</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/logo.png')}}">
 
 @yield('styles')
 @yield('datastyles')
@@ -42,7 +42,7 @@
                         <div class="col-xl-12">
                             <div class="auth-form">
                                 <div class="text-center mb-3">
-                                    <a href="{{route('home')}}"><img src="{{asset('images/logo.png')}}" width="300px" alt=""></a>
+                                    <a href="{{route('home')}}"><img src="{{asset('images/favicon.png')}}" width="300px" alt=""></a>
                                 </div>
                                 <h4 class="text-center mb-4">Sign up your account</h4>
                                 @include('includes.main.alerts')

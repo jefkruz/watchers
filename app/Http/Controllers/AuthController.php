@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ResetPasswordMail;
 use App\Models\Admin;
 use App\Models\Campus;
 use App\Models\Country;
 use App\Models\Participant;
+use App\Models\PasswordReset;
 use App\Models\RegistrationMail;
 use App\Models\SuccessfulRegistration;
 use App\Models\User;
 use App\Models\Zone;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -32,6 +35,62 @@ class AuthController extends Controller
         return view('auth.signin',$data);
     }
 
+    public function showForgotPassword()
+    {
+        if(session('user')){
+            return redirect()->route('home');
+        }
+        return view('auth.passwords.email');
+    }
+
+    public function forgotPassword(Request $request)
+    {
+        // Validate the request data
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        // Check if the user exists
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+
+            return back()->withErrors(['email' => 'User not found']);
+        }
+
+        // Generate a unique token
+        $token = md5(time()) . md5(uniqid());
+
+        $user->password_token = $token;
+        $user->save();
+
+        Mail::to($user->email)
+            ->send(new ResetPasswordMail($user));
+
+
+        return back()->with('success', 'Password reset link has been sent to your email');
+    }
+
+    public function showResetPassword($username, $code)
+    {
+        $data['user'] = User::where('username', $username)->where('password_token', $code)->firstOrFail();
+
+        return view('auth.passwords.reset', $data);
+
+    }
+
+    public function resetPassword($username, $code, Request $request)
+    {
+        $request->validate(['password' => 'required|confirmed']);
+
+        $user = User::where('username', $username)->where('password_token', $code)->firstOrFail();
+
+        // Update the user's password
+        $user->update(['password' => bcrypt($request->password), 'password_token' => null]);
+
+        return redirect()->route('login')->with('success', 'Password reset successful');
+    }
+
     public function showRegister($username = 'admin')
     {
 
@@ -49,7 +108,7 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        $user = User::whereEmail($request->email)->first();
+        $user = User::whereEmail($request->email)->where('password_token', null)->first();
         if(!$user){
             return back()->withInput()->with('error', 'Incorrect credentials');
         }

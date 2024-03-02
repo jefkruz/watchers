@@ -31,10 +31,15 @@ use App\Http\Controllers\MainController;
 */
 
 Route::get('auth/v1/register/confirm/{username}/{code}', [AuthController::class, 'verifyRegistration'])->name('verifyRegistration');
+Route::get('auth/v2/reset/password/{username}/{code}', [AuthController::class, 'showResetPassword'])->name('showResetPassword');
+Route::post('auth/v2/password/{username}/{code}', [AuthController::class, 'resetPassword'])->name('resetPassword');
 Route::get('global-directories', [HomeController::class, 'globalDirectories'])->name('globalDirectories');
 Route::get('login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
 
+
+Route::get('forgot/password', [AuthController::class, 'showForgotPassword'])->name('password.reset');
+Route::post('forgot/password', [AuthController::class, 'forgotPassword'])->name('password.email');
 
 Route::get('register', [AuthController::class, 'showRegister'])->name('register');
 Route::get('register/{username}', [AuthController::class, 'showRegister'])->name('referralRegister');

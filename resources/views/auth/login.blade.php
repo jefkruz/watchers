@@ -19,7 +19,7 @@
 
     <title>{{$page_title ?? ' '}}</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/logo.png')}}">
 
 @yield('styles')
 @yield('datastyles')
@@ -40,7 +40,7 @@
                         <div class="col-xl-12">
                             <div class="auth-form">
                                 <div class="text-center mb-3">
-                                    <a href="{{route('home')}}"><img src="{{asset('images/logo.png')}}"  width="300px" alt=""></a>
+                                    <a href="{{route('home')}}"><img src="{{asset('images/favicon.png')}}"  width="300px" alt=""></a>
                                 </div>
                                 <h4 class="text-center mb-4">Sign in your account</h4>
                                 @include('includes.main.alerts')
@@ -72,11 +72,11 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            @if (Route::has('password.request'))
 
-                                            <a class="btn btn-link" href="{{ route('password.request') }}">Forgot Password?</a>
-                                            @endif
+                                            <a  href="{{ route('password.reset') }}">Forgot Password?</a>
+
                                         </div>
+
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>

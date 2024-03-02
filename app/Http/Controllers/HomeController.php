@@ -142,7 +142,6 @@ class HomeController extends Controller
         $token->save();
 
         return response()->json(['message' => 'Firebase token updated successfully']);
-
     }
 
     public function testimony()
