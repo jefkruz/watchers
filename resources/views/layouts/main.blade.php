@@ -102,7 +102,7 @@
             Footer end
         ***********************************-->
 
-        @include('includes.main.scripts')
+
     <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-messaging.js"></script>
     <script>
@@ -199,6 +199,7 @@
             console.log('Error getting Firebase registration token: ', error);
         });
     </script>
+    @include('includes.main.scripts')
         @yield('script')
         </body>
         </html>
