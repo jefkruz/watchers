@@ -97,6 +97,8 @@ Route::group(['middleware' => 'isGuest'], function() {
 });
 
 Route::group(['middleware' => 'isLoggedIn'], function() {
+    Route::post('firebase/token', [WebNotificationsController::class, 'saveFirebaseToken'])->name('saveToken');
+
     Route::get('/', [HomeController::class, 'index']);
     Route::get('home', [HomeController::class, 'index'])->name('home');
     Route::get('notify', [HomeController::class, 'notify'])->name('notify');
@@ -147,6 +149,9 @@ Route::group(['middleware' => 'isLoggedIn'], function() {
 
 Route::group(['middleware' => 'isAdmin', 'prefix' => 'pilot'], function(){
     Route::get('/', [DashboardController::class, 'adminDashboard'])->name('adminDashboard');
+    Route::get('push-notification', [DashboardController::class, 'pushNotification'])->name('adminNotification');
+
+    Route::post('notification', [WebNotificationsController::class, 'sendFirebaseNotification'])->name('sendNotification');
 
 
     Route::group(['prefix' => 'zones'], function(){

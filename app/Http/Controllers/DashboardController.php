@@ -49,6 +49,11 @@ class DashboardController extends Controller
     }
 
 
-
+    public function pushNotification()
+    {
+        $data['page_title'] = 'Push Notification';
+        $data['notif_menu'] = true;
+        return view('backend.notification', $data);
+    }
 
 }

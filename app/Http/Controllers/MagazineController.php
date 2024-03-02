@@ -11,7 +11,7 @@ class MagazineController extends Controller
     public function index()
     {
         $data['page_title'] = 'Magazines';
-        $data['slides_menu'] = true;
+        $data['magazine_menu'] = true;
         $data['magazines'] = Magazine::all();
         return view('backend.magazines.index', $data);
     }

@@ -27,7 +27,7 @@
     <link href="{{asset('main/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
     <link href="{{asset('main/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('main/vendor/owl-carousel/owl.carousel.css')}}" rel="stylesheet">
-    @laravelPWA
+
 
 </head>
 <body class="h-100">

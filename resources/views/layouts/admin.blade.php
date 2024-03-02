@@ -1,7 +1,7 @@
 <?php
 $dash_menu = isset($dash_menu) ? 'active' : '';
 $training_menu = isset($training_menu) ? 'active' : '';
-
+$notif_menu = isset($notif_menu) ? 'active' : '';
 $slides_menu = isset($slides_menu) ? 'active' : '';
 $meet_menu = isset($meet_menu) ? 'active' : '';
 $birthday_menu = isset($birthday_menu) ? 'active' : '';
@@ -13,6 +13,7 @@ $staff_menu = isset($staff_menu) ? 'active' : '';
 $leader_menu = isset($leader_menu) ? 'active' : '';
 $campus_menu = isset($campus_menu) ? 'active' : '';
 $zone_menu = isset($zone_menu) ? 'active' : '';
+$magazine_menu = isset($magazine_menu) ? 'active' : '';
 
 ?>
 <!DOCTYPE html>
@@ -191,6 +192,22 @@ $zone_menu = isset($zone_menu) ? 'active' : '';
                             <i class="nav-icon fa fa-globe"></i>
                             <p>
                                 Church Zones
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('magazines.index')}}" class="nav-link {{$magazine_menu}}">
+                            <i class="nav-icon fa fa-file-pdf"></i>
+                            <p>
+                                Magazines
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('adminNotification')}}" class="nav-link {{$notif_menu}}">
+                            <i class="nav-icon fa fa-signal"></i>
+                            <p>
+                                Push Notification
                             </p>
                         </a>
                     </li>

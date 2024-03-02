@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FirebaseToken;
 use App\Models\ViewedNotification;
 use App\Models\WebNotification;
 use Illuminate\Http\Request;
@@ -76,5 +77,69 @@ class WebNotificationsController extends Controller
         $viewed = ViewedNotification::where('user_id', $user->id)->count();
         $stat = ($all == $viewed) ? false : true;
         return response(['status' => $stat], 200);
+    }
+
+    public function saveFirebaseToken(Request $request)
+    {
+        $request->validate([
+            'newtoken' => 'required'
+        ]);
+
+        $user = Session::get('user');
+        $t = FirebaseToken::where('user_id', $user->id)->where('platform', 'web')->first();
+        if(!$t){
+            $t = new FirebaseToken();
+            $t->user_id = $user->id;
+            $t->platform = 'web';
+        }
+
+        $t->token = $request->newtoken;
+        $t->save();
+
+        return response(['status' => true, 'message' => 'Token saved'], 200);
+
+    }
+    public function sendFirebaseNotification(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+        $url ="https://fcm.googleapis.com/fcm/send";
+
+        $registrationIds = [];
+        $tokens = FirebaseToken::all();
+
+        foreach($tokens as $token){
+
+            array_push($registrationIds, $token->token);
+        }
+
+        $fields=array(
+            "registration_ids"=> $registrationIds,
+            "notification"=>array(
+                "body"=> $request->body,
+                "title"=> $request->title,
+                "icon"=> url('images/favicon.png'),
+                "click_action"=> route('dashboard')
+            )
+        );
+
+        $headers=array(
+            'Authorization: key=AAAA0-tAPuo:APA91bFi54FlkX18cPTxSDzaTXUT5gI_BPSppB83eZcw1P2tF-vXMP092MhgHYAvF7_ep4Un78VHr5nLV0lKlhKiF1Oa-KZCXNfd3Az81fGDSbKzGfqzzN9KINyNc5t51pjbFr3fcsKT',
+            'Content-Type:application/json'
+        );
+
+        $ch=curl_init();
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_POST,true);
+        curl_setopt($ch,CURLOPT_HTTPHEADER,$headers);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($ch,CURLOPT_POSTFIELDS,json_encode($fields));
+        $result=curl_exec($ch);
+//        print_r($result);
+        curl_close($ch);
+
+        return back()->with('message', 'Message sent');
     }
 }

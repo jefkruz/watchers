@@ -171,6 +171,21 @@
             </div>
         </div>
 
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gradient-dark">
+                <div class="inner">
+                    <h3>0</h3>
+
+                    <p>Push Notifications</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-signal"></i>
+                </div>
+                <a href="{{route('adminNotification')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
     </div>
     @endsection
 
