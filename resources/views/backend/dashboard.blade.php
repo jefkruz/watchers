@@ -158,6 +158,20 @@
 
         <div class="col-lg-3 col-6">
             <!-- small box -->
+            <div class="small-box bg-gradient-purple">
+                <div class="inner">
+                    <h3>{{$videos}}</h3>
+
+                    <p>Videos</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-video"></i>
+                </div>
+                <a href="{{route('videos.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
             <div class="small-box bg-gradient-blue">
                 <div class="inner">
                     <h3>{{$magazines}}</h3>

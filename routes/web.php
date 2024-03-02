@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CampusController;
 use App\Http\Controllers\MagazineController;
+use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ZoneController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -247,6 +248,15 @@ Route::group(['middleware' => 'isAdmin', 'prefix' => 'pilot'], function(){
         Route::get('edit/{id}', [ResourcesController::class, 'edit'])->name('resources.edit');
         Route::patch('update/{id}', [ResourcesController::class, 'update'])->name('resources.update');
         Route::delete('{id}', [ResourcesController::class, 'delete'])->name('resources.delete');
+    });
+
+    Route::group(['prefix' => 'videos'], function(){
+        Route::get('/', [VideoController::class, 'index'])->name('videos.index');
+        Route::post('/', [VideoController::class, 'store'])->name('videos.store');
+        Route::get('create', [VideoController::class, 'create'])->name('videos.create');
+        Route::get('edit/{id}', [VideoController::class, 'edit'])->name('videos.edit');
+        Route::post('delete/{id}', [VideoController::class, 'destroy'])->name('videos.delete');
+        Route::patch('update/{id}', [VideoController::class, 'update'])->name('videos.update');
     });
 
 

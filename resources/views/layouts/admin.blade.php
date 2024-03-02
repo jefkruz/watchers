@@ -14,6 +14,7 @@ $leader_menu = isset($leader_menu) ? 'active' : '';
 $campus_menu = isset($campus_menu) ? 'active' : '';
 $zone_menu = isset($zone_menu) ? 'active' : '';
 $magazine_menu = isset($magazine_menu) ? 'active' : '';
+$video_menu = isset($video_menu) ? 'active' : '';
 
 ?>
 <!DOCTYPE html>
@@ -192,6 +193,14 @@ $magazine_menu = isset($magazine_menu) ? 'active' : '';
                             <i class="nav-icon fa fa-globe"></i>
                             <p>
                                 Church Zones
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('videos.index')}}" class="nav-link {{$video_menu}}">
+                            <i class="nav-icon fa fa-video"></i>
+                            <p>
+                                Videos
                             </p>
                         </a>
                     </li>

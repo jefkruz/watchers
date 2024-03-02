@@ -36,7 +36,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->data['magazines'] = Magazine::all();
-        $this->data['video'] = Video::where('status','Active')->first();
+        $this->data['video'] = Video::where('status','active')->first();
         $this->data['stream'] = Stream::where('id',1)->first();
 
 

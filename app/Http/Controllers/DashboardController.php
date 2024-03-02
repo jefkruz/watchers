@@ -13,6 +13,7 @@ use App\Models\Slide;
 use App\Models\TeamHead;
 use App\Models\Training;
 use App\Models\User;
+use App\Models\Video;
 use App\Models\WebNotification;
 use App\Models\Zone;
 use Illuminate\Http\Request;
@@ -40,7 +41,7 @@ class DashboardController extends Controller
         $data['magazines'] = Magazine::count();
         $data['posts'] = ResourcePost::count();
         $data['participants'] = Participant::count();
-//        $data['forums'] = Forum::count();
+        $data['videos'] = Video::count();
 
         $data['meetings'] = Meeting::count();
         $data['zones'] = Zone::count();
