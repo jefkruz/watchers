@@ -39,7 +39,7 @@
                                         </td>
                                         <td>
                                             <a  href="{{route('magazines.list',$fam->id)}}"  class="btn  btn-primary">
-                                                {{$fam->download_count}}    View</a>
+                                                {{$fam->download_count}}    Downloads <i class="fa fa-eye"></i></a>
                                         </td>
                                         <td>  <a  href="{{asset($fam->file)}}" download="{{$fam->file}}" class="btn  btn-warning"><i class="fa fa-download color-warning"></i>
                                    Download</a></td>
