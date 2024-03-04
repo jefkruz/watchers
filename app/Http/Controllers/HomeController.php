@@ -38,6 +38,7 @@ class HomeController extends Controller
         $this->data['magazines'] = Magazine::all();
         $this->data['video'] = Video::where('status','active')->first();
         $this->data['stream'] = Stream::where('id',1)->first();
+        $this->data['notifications'] = WebNotificationsController::fetchLatestNotifications();
 
 
     }
