@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Campus;
+use App\Models\Download;
 use App\Models\FirebaseToken;
 use App\Models\Magazine;
 use App\Models\Meeting;
@@ -42,6 +43,7 @@ class DashboardController extends Controller
         $data['posts'] = ResourcePost::count();
         $data['participants'] = Participant::count();
         $data['videos'] = Video::count();
+        $data['downloads'] = Download::count();
 
         $data['meetings'] = Meeting::count();
         $data['zones'] = Zone::count();

@@ -17,7 +17,8 @@
                                     <th>CAPTION</th>
                                     <th>TITLE</th>
                                     <th>MONTH</th>
-                                    <th>DOWNLOAD</th>
+                                    <th>DOWNLOADS</th>
+                                    <th>GET</th>
 
                                     <th>ACTION</th>
                                 </tr>
@@ -35,6 +36,10 @@
                                         </td>
                                         <td>
                                             {{$fam->month}}
+                                        </td>
+                                        <td>{{$fam->downlad_count}}
+                                            <a  href="{{route('magazines.list',$fam->id)}}"  class="btn  btn-primary">
+                                                 View</a>
                                         </td>
                                         <td>  <a  href="{{asset($fam->file)}}" download="{{$fam->file}}" class="btn  btn-warning"><i class="fa fa-download color-warning"></i>
                                    Download</a></td>

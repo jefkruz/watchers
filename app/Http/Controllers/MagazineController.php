@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Download;
 use App\Models\Magazine;
 use Illuminate\Http\Request;
 
@@ -38,6 +39,14 @@ class MagazineController extends Controller
         $s->save();
 
         return back()->with('message', 'Magazine added');
+    }
+
+    public function listMags($id)
+    {
+        $data['page_title'] = 'Magazines';
+        $data['magazine_menu'] = true;
+        $data['magazines'] = Download::where('mag_id',$id)->get();
+        return view('backend.magazines.downloads', $data);
     }
 
     public function delete($id)

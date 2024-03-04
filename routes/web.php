@@ -210,6 +210,7 @@ Route::group(['middleware' => 'isAdmin', 'prefix' => 'pilot'], function(){
     Route::group(['prefix' => 'magazine'], function(){
         Route::get('/', [MagazineController::class, 'index'])->name('magazines.index');
         Route::post('/', [MagazineController::class, 'store'])->name('magazines.store');
+        Route::get('list/{id}', [MagazineController::class, 'listMags'])->name('magazines.list');
         Route::delete('{id}', [MagazineController::class, 'delete'])->name('magazines.delete');
     });
 
