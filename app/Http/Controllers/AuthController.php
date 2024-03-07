@@ -151,7 +151,7 @@ class AuthController extends Controller
 
         $refer = User::findOrFail($request->referral_id);
 
-        $userExists = Participant::whereEmail($request->email)->first();
+        $userExists = Participant::whereEmail($request->email)->exists();
 
         if($userExists){
             session()->put('guest', $userExists);
