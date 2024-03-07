@@ -20,8 +20,7 @@ class AuthController extends Controller
     public function showLogin()
     {
         if(session('user')){
-            $intendedUrl = session('url.intended', route('home'));
-            return redirect($intendedUrl);
+            return redirect()->route('home');
         }
         return view('auth.login');
     }
@@ -29,8 +28,7 @@ class AuthController extends Controller
     public function showSignIn($username = 'admin')
     {
         if(session('guest')){
-            $intendedUrl = session('url.intended', route('guest'));
-            return redirect($intendedUrl);
+            return redirect()->route('guest');
         }
         $data['refer'] = User::whereUsername($username)->firstOrFail();
         $data['countries'] = Country::all();
