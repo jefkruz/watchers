@@ -157,7 +157,7 @@
                                         <tr>
                                             <td style="overflow-wrap:break-word;word-break:break-word;padding:30px 10px 15px;font-family:'Cabin',sans-serif;" align="left">
 
-                                                <h1 style="margin: 0px; color: #ffffff; line-height: 140%; text-align: center; word-wrap: break-word; font-family: 'Cabin',sans-serif; font-size: 27px; font-weight: 400;">Welcome to Influencers network</h1>
+                                                <h1 style="margin: 0px; color: #ffffff; line-height: 140%; text-align: center; word-wrap: break-word; font-family: 'Cabin',sans-serif; font-size: 27px; font-weight: 400;">Welcome to  the Watchers Influencers network</h1>
 
                                             </td>
                                         </tr>
@@ -228,7 +228,7 @@
                                             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 15px 25px;font-family:'Cabin',sans-serif;" align="left">
 
                                                 <div style="font-size: 14px; color: #ffffff; line-height: 160%; text-align: center; word-wrap: break-word;">
-                                                    <p style="font-size: 14px; line-height: 160%;">Thank you for registering on Thw Watchers   Network,  We are delighted to have you as a valued Influencer. To complete the registration process and gain access to all the features of our website, we kindly request you to verify your account.</p>
+                                                    <p style="font-size: 14px; line-height: 160%;">Thank you for registering on The Watchers   Network,  We are delighted to have you as a valued Influencer. To complete the registration process and gain access to all the features of our website, we kindly request you to verify your account.</p>
                                                 </div>
 
                                             </td>
@@ -401,7 +401,7 @@
 
                                                 <div style="font-size: 14px; color: #888888; line-height: 180%; text-align: center; word-wrap: break-word;">
                                                     <p style="font-size: 14px; line-height: 180%;"> </p>
-                                                    <p style="font-size: 14px; line-height: 180%;"><span style="font-size: 12px; line-height: 21.6px;">© {{date('Y')}} YLWSIN . All Rights Reserved.</span></p>
+                                                    <p style="font-size: 14px; line-height: 180%;"><span style="font-size: 12px; line-height: 21.6px;">© {{date('Y')}}  WATCHERS NETWORK . All Rights Reserved.</span></p>
                                                 </div>
 
                                             </td>

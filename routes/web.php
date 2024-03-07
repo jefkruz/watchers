@@ -90,6 +90,7 @@ Route::group(['middleware' => 'isGuest'], function() {
     Route::get('index', [MainController::class, 'index'])->name('guest');
     Route::get('programmes', [MeetingsController::class, 'showMeetings'])->name('guestMeetings');
     Route::get('programme/view/{code}', [MeetingsController::class, 'attendGuestMeeting'])->name('attendGuestsMeeting');
+    Route::get('download/magazine/{username}', [HomeController::class, 'downloadMagazine'])->name('mag');
 
 //TESTIMONY ROUTES
     Route::get('testimonies', [MainController::class, 'guestTestimony'])->name('guestTestimony');
@@ -119,7 +120,6 @@ Route::group(['middleware' => 'isLoggedIn'], function() {
     Route::get('trainings/view/{id}', [CoursesController::class, 'viewCourse'])->name('viewCourse');
     Route::get('trainings/preview/{id}', [CoursesController::class, 'previewCourse'])->name('previewCourse');
     Route::get('trainings/payment/verify/{id}', [CoursesController::class, 'verifyCoursePayment'])->name('verifyCoursePayment');
-    Route::get('download/magazine/{username}', [HomeController::class, 'downloadMagazine'])->name('mag');
     Route::get('profile', [HomeController::class, 'profile'])->name('profile');
     Route::patch('profile', [HomeController::class, 'updateProfile'])->name('updateProfile');
     Route::get('referral', [HomeController::class, 'referrals'])->name('referrals');

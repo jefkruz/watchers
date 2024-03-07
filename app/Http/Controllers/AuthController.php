@@ -20,7 +20,8 @@ class AuthController extends Controller
     public function showLogin()
     {
         if(session('user')){
-            return redirect()->route('home');
+            $intendedUrl = session('url.intended', route('home'));
+            return redirect($intendedUrl);
         }
         return view('auth.login');
     }
@@ -28,7 +29,8 @@ class AuthController extends Controller
     public function showSignIn($username = 'admin')
     {
         if(session('guest')){
-            return redirect()->route('guest');
+            $intendedUrl = session('url.intended', route('guest'));
+            return redirect($intendedUrl);
         }
         $data['refer'] = User::whereUsername($username)->firstOrFail();
         $data['countries'] = Country::all();
@@ -127,7 +129,9 @@ class AuthController extends Controller
         }
 
         session()->put('user', $user);
-        return to_route('home');
+        $intendedUrl = session('url.intended', route('home'));
+        return redirect($intendedUrl);
+//        return to_route('home');
 
 
     }
@@ -148,7 +152,9 @@ class AuthController extends Controller
         $userExists = Participant::whereEmail($request->email)->exists();
         if($userExists){
             session()->put('guest', $userExists);
-            return to_route('guest')->with('message', 'Welcome to Influencers Network');
+            $intendedUrl = session('url.intended', route('guest'));
+            return redirect($intendedUrl)->with('message', 'Welcome to Influencers Network');
+
         }
 
         $user = new Participant();
@@ -159,7 +165,8 @@ class AuthController extends Controller
         $user->country = $request->country;
         $user->save();
         session()->put('guest', $user);
-        return to_route('guest')->with('message', 'Welcome to Influencers Network');
+        $intendedUrl = session('url.intended', route('guest'));
+        return redirect($intendedUrl)->with('message', 'Welcome to Influencers Network');
     }
 
     public function register(Request $request, $username = 'admin')

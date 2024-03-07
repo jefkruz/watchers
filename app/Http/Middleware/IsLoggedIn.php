@@ -16,6 +16,10 @@ class IsLoggedIn
      */
     public function handle(Request $request, Closure $next)
     {
-        return (session('user')) ? $next($request) : to_route('login');
+        if (!session('user')) {
+            session(['url.intended' => url()->current()]);
+            return redirect()->route('login');
+        }
+        return $next($request);
     }
 }

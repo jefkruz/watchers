@@ -12,7 +12,7 @@
     <meta property="og:title" content="The Watchers influencers network" />
     <meta property="og:description" content="The Watchers influencers network" />
     <meta name="format-detection" content="telephone=no">
-    <link rel="manifest" href="/manifest.json">
+
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

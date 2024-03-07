@@ -16,6 +16,10 @@ class IsGuest
      */
     public function handle(Request $request, Closure $next)
     {
-        return (session('guest')) ? $next($request) : to_route('signIn');
+        if (!session('guest')) {
+            session(['url.intended' => url()->current()]);
+            return redirect()->route('signIn');
+        }
+
     }
 }
