@@ -153,7 +153,9 @@ class AuthController extends Controller
 
         if($userExists){
             session()->put('guest', $userExists);
-            return to_route('guest')->with('message', 'Welcome to Influencers Network');
+            $guestUrl = session('guest.intended', route('guest'));
+            return redirect($guestUrl)->with('message', 'Welcome to Influencers Network');
+
 
 
         }
@@ -167,9 +169,9 @@ class AuthController extends Controller
         $user->save();
 
         session()->put('guest', $user);
-//        $guestUrl = session('guest.intended', route('guest'));
-//        return redirect($guestUrl)->with('message', 'Welcome to Influencers Network');
-        return to_route('guest')->with('message', 'Welcome to Influencers Network');
+        $guestUrl = session('guest.intended', route('guest'));
+        return redirect($guestUrl)->with('message', 'Welcome to Influencers Network');
+//        return to_route('guest')->with('message', 'Welcome to Influencers Network');
     }
 
     public function register(Request $request, $username = 'admin')
