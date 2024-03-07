@@ -139,6 +139,7 @@ class AuthController extends Controller
     public function signIn(Request $request, $username = 'admin')
     {
 
+
         $request->validate([
             'email' => 'required|email',
             'name' => 'required',
@@ -147,13 +148,15 @@ class AuthController extends Controller
             'country' => 'required',
         ]);
 
+
         $refer = User::findOrFail($request->referral_id);
 
-        $userExists = Participant::whereEmail($request->email)->exists();
+        $userExists = Participant::whereEmail($request->email)->first();
+
         if($userExists){
             session()->put('guest', $userExists);
-            $intendedUrl = session('url.intended', route('guest'));
-            return redirect($intendedUrl)->with('message', 'Welcome to Influencers Network');
+            $guestUrl = session('guest.intended', route('guest'));
+            return redirect($guestUrl)->with('message', 'Welcome to Influencers Network');
 
         }
 
@@ -164,6 +167,7 @@ class AuthController extends Controller
 //        $user->phone = $request->phone;
         $user->country = $request->country;
         $user->save();
+
         session()->put('guest', $user);
         $intendedUrl = session('url.intended', route('guest'));
         return redirect($intendedUrl)->with('message', 'Welcome to Influencers Network');

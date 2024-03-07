@@ -4,15 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="influencers, your Loveworld, influencers network" />
+    <meta name="keywords" content="influencers, watchers, The Watchers, influencers network" />
     <meta name="author" content="Loveworld Inc" />
     <meta name="robots" content="index, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Your Loveworld Specials: Influencers Network " />
-    <meta property="og:title" content="Your Loveworld Specials: Influencers Network" />
-    <meta property="og:description" content="Your Loveworld Specials: Influencers Network" />
+    <meta name="description" content="The Watchers Influencers Network " />
+    <meta property="og:title" content="The Watchers: Influencers Network" />
+    <meta property="og:description" content="The Watchers: Influencers Network" />
     <meta name="format-detection" content="telephone=no">
-    <link rel="manifest" href="/manifest.json">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -29,7 +28,7 @@
     <link href="{{asset('main/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
     <link href="{{asset('main/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('main/vendor/owl-carousel/owl.carousel.css')}}" rel="stylesheet">
-    @laravelPWA
+
 
 </head>
 <body>
@@ -95,7 +94,7 @@
  ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright ©  <a href="#" target="_blank">Loveworld Incorporated</a> <script>document.write(new Date().getFullYear());</script></p>
+                <p>Copyright ©  <a href="#" target="_blank">Watchers Network</a> <script>document.write(new Date().getFullYear());</script></p>
             </div>
         </div>
         <!--**********************************
