@@ -267,3 +267,12 @@ Route::group(['middleware' => 'isAdmin', 'prefix' => 'pilot'], function(){
 
 
 });
+Route::get('clear', function() {
+    Artisan::call('cache:clear');
+
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
+    return "Cleared!";
+});

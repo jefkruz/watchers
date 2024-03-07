@@ -149,12 +149,12 @@ class AuthController extends Controller
 
         $refer = User::findOrFail($request->referral_id);
 
-        $userExists = Participant::whereEmail($request->email)->exists();
+        $userExists = Participant::whereEmail($request->email)->first();
 
         if($userExists){
             session()->put('guest', $userExists);
-            $guestUrl = session('guest.intended', route('guest'));
-            return redirect($guestUrl)->with('message', 'Welcome to Influencers Network');
+            return to_route('guest')->with('message', 'Welcome to Influencers Network');
+
 
         }
 
@@ -167,8 +167,9 @@ class AuthController extends Controller
         $user->save();
 
         session()->put('guest', $user);
-        $intendedUrl = session('url.intended', route('guest'));
-        return redirect($intendedUrl)->with('message', 'Welcome to Influencers Network');
+//        $guestUrl = session('guest.intended', route('guest'));
+//        return redirect($guestUrl)->with('message', 'Welcome to Influencers Network');
+        return to_route('guest')->with('message', 'Welcome to Influencers Network');
     }
 
     public function register(Request $request, $username = 'admin')
