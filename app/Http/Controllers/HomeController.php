@@ -88,10 +88,55 @@ class HomeController extends Controller
         return view('influencers.magazine', $data);
     }
 
-    public function downloadMagazine($username)
+    public function downloadMagazine(Request $request)
     {
 
-        $user = User::whereUsername($username)->firstOrFail();
+        $request->validate([
+            'email' => 'required|email',
+            'name' => 'required',
+            'referral_id' => 'required',
+            'country' => 'required',
+        ]);
+
+
+        $refer = User::findOrFail($request->referral_id);
+        $username = $refer->username;
+
+        $userExists = Participant::whereEmail($request->email)->first();
+
+        if($userExists){
+
+            $magazine = Magazine::where('status', 'active')->firstOrFail();
+            $ipAddress = request()->ip();
+            $existingDownload = Download::where('mag_id', $magazine->id)
+                ->where('user_id',$userExists->id)
+                ->where('ip_address', $ipAddress)
+                ->first();
+
+            if (!$existingDownload) {
+                // Create a new download entry for the user
+                $download = new Download();
+                $download->mag_id = $magazine->id;
+                $download->user_id = $userExists->id;
+                $download->ip_address = $ipAddress;
+                $download->save();
+
+
+                // Update the download count for the magazine
+                $magazine->increment('download_count');
+            }
+            return response()->download($magazine->file);
+
+
+        }
+
+        $user = new Participant();
+        $user->referral_id = $refer->id;
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->country = $request->country;
+        $user->save();
+
         $magazine = Magazine::where('status', 'active')->firstOrFail();
         $ipAddress = request()->ip();
 

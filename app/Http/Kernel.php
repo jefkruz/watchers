@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\canDownload;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsLoggedIn;
 use App\Http\Middleware\IsGuest;
@@ -69,6 +70,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'isLoggedIn' => IsLoggedIn::class,
         'isAdmin' => IsAdmin::class,
+        'canDownload' => canDownload::class,
         'isGuest' => IsGuest::class
     ];
 }

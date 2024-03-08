@@ -35,6 +35,16 @@ class AuthController extends Controller
         return view('auth.signin',$data);
     }
 
+    public function showForm($username = 'admin')
+    {
+//        if(session('guest')){
+//            return redirect()->route('guest');
+//        }
+        $data['refer'] = User::whereUsername($username)->firstOrFail();
+        $data['countries'] = Country::all();
+        return view('auth.show_form',$data);
+    }
+
     public function showForgotPassword()
     {
         if(session('user')){
@@ -153,10 +163,10 @@ class AuthController extends Controller
 
         if($userExists){
             session()->put('guest', $userExists);
-            $guestUrl = session('guest.intended', route('guest'));
-            return redirect($guestUrl)->with('message', 'Welcome to Influencers Network');
+//            $guestUrl = session('guest.intended', route('guest'));
+//            return redirect($guestUrl)->with('message', 'Welcome to Influencers Network');
 
-
+            return to_route('guest')->with('message', 'Welcome to Influencers Network');
 
         }
 
@@ -169,9 +179,43 @@ class AuthController extends Controller
         $user->save();
 
         session()->put('guest', $user);
-        $guestUrl = session('guest.intended', route('guest'));
-        return redirect($guestUrl)->with('message', 'Welcome to Influencers Network');
-//        return to_route('guest')->with('message', 'Welcome to Influencers Network');
+//        $guestUrl = session('guest.intended', route('guest'));
+//        return redirect($guestUrl)->with('message', 'Welcome to Influencers Network');
+        return to_route('guest')->with('message', 'Welcome to Influencers Network');
+    }
+
+    public function canDownload(Request $request, $username = 'admin')
+    {
+
+
+        $request->validate([
+            'email' => 'required|email',
+            'name' => 'required',
+            'referral_id' => 'required',
+//            'phone' => 'required',
+            'country' => 'required',
+        ]);
+
+
+        $refer = User::findOrFail($request->referral_id);
+        $username = $refer->username;
+
+        $userExists = Participant::whereEmail($request->email)->first();
+
+        if($userExists){
+            session()->put('eligible', $userExists);
+            return to_route('mag',$username);
+
+        }
+
+        $user = new Participant();
+        $user->referral_id = $refer->id;
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->country = $request->country;
+        $user->save();
+        session()->put('eligible', $user);
+        return to_route('mag',$username);
     }
 
     public function register(Request $request, $username = 'admin')

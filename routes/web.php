@@ -46,7 +46,10 @@ Route::get('register/{username}', [AuthController::class, 'showRegister'])->name
 
 Route::get('signin', [AuthController::class, 'showSignIn'])->name('signIn');
 Route::get('signin/{username}', [AuthController::class, 'showSignIn'])->name('referralSignIn');
-Route::get('download/magazine/{username}', [HomeController::class, 'downloadMagazine'])->name('mag');
+Route::get('form', [AuthController::class, 'showForm'])->name('form');
+Route::post('form', [AuthController::class, 'canDownload'])->name('submitForm');
+Route::post('download/magazine', [HomeController::class, 'downloadMagazine'])->name('downloadMag');
+Route::get('download/magazine/{username}', [AuthController::class, 'showForm'])->name('mag');
 
 Route::post('signin', [AuthController::class, 'signIn']);
 Route::post('register', [AuthController::class, 'register']);
@@ -86,11 +89,15 @@ Route::group(['prefix' => 'ajax'], function(){
 
 });
 
+Route::group(['middleware' => 'canDownload'], function() {
+
+
+});
+
 Route::group(['middleware' => 'isGuest'], function() {
-    Route::get('index', [MainController::class, 'index'])->name('guest');
+    Route::get('participant', [MainController::class, 'index'])->name('guest');
     Route::get('programmes', [MeetingsController::class, 'showMeetings'])->name('guestMeetings');
     Route::get('programme/view/{code}', [MeetingsController::class, 'attendGuestMeeting'])->name('attendGuestsMeeting');
-    Route::get('download/magazine/{username}', [HomeController::class, 'downloadMagazine'])->name('mag');
 
 //TESTIMONY ROUTES
     Route::get('testimonies', [MainController::class, 'guestTestimony'])->name('guestTestimony');
