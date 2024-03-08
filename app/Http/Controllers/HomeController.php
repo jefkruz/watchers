@@ -100,7 +100,7 @@ class HomeController extends Controller
 
 
         $refer = User::findOrFail($request->referral_id);
-        $username = $refer->username;
+        $userid = $request->referral_id;
 
         $userExists = Participant::whereEmail($request->email)->first();
 
@@ -109,7 +109,7 @@ class HomeController extends Controller
             $magazine = Magazine::where('status', 'active')->firstOrFail();
             $ipAddress = request()->ip();
             $existingDownload = Download::where('mag_id', $magazine->id)
-                ->where('user_id',$userExists->id)
+                ->where('user_id',$userid)
                 ->where('ip_address', $ipAddress)
                 ->first();
 
@@ -117,7 +117,7 @@ class HomeController extends Controller
                 // Create a new download entry for the user
                 $download = new Download();
                 $download->mag_id = $magazine->id;
-                $download->user_id = $userExists->id;
+                $download->user_id = $userid;
                 $download->ip_address = $ipAddress;
                 $download->save();
 
@@ -141,7 +141,7 @@ class HomeController extends Controller
         $ipAddress = request()->ip();
 
         $existingDownload = Download::where('mag_id', $magazine->id)
-            ->where('user_id',$user->id)
+            ->where('user_id',$user->referral_id)
             ->where('ip_address', $ipAddress)
             ->first();
 
@@ -149,7 +149,7 @@ class HomeController extends Controller
             // Create a new download entry for the user
             $download = new Download();
             $download->mag_id = $magazine->id;
-            $download->user_id = $user->id;
+            $download->user_id = $user->referral_id;
             $download->ip_address = $ipAddress;
             $download->save();
 
