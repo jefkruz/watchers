@@ -43,7 +43,7 @@
                                 <div class="text-center mb-3">
                                     <a href="{{route('home')}}"><img src="{{asset('images/favicon.png')}}" width="300px" alt=""></a>
                                 </div>
-                                <h4 class="text-center mb-4">Sign up your account</h4>
+                                <h4 class="text-center mb-4">Sign up to Download</h4>
                                 @include('includes.main.alerts')
                                 @if($refer->username != 'admin')
                                     <h4 class="text-center mb-4">You are being referred by <b>{{ucwords($refer->name)}}</b></h4>
