@@ -19,6 +19,7 @@
     <title>{{$page_title ?? ' '}}</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/logo.png')}}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 @yield('styles')
 @yield('datastyles')
@@ -67,7 +68,7 @@
 {{--                                    </div>--}}
                                     <div class="form-group">
                                         <label class="mb-1"><strong>Country<span class="text-danger">*</span></strong></label>
-                                        <select class="form-select   form-control wide  mb-3"  name="country" required>
+                                        <select class=" form-select   form-control wide country "  name="country" required>
                                             @foreach($countries as $country)
                                                 <option value="{{$country->name}}" @if (old('country') == $country->name) selected="selected" @endif>{{$country->name}}</option>
                                             @endforeach
@@ -86,5 +87,13 @@
         </div>
     </div>
 </div>
-
+@section('datascripts')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.country').select2();
+        });
+    </script>
+@endsection
 @include('includes.main.scripts')
+
