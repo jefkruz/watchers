@@ -265,17 +265,21 @@ class AuthController extends Controller
         $user->image = url('avatar/default.png');
         $user->country = $request->country;
         $user->password = bcrypt($request->password);
-        $user->verification_code = $verification_code;
-        $user->status = 'inactive';
+        $user->verification_code = null;
+        $user->status = 'active';
         $user->save();
 
-        $mail = new RegistrationMail();
-        $mail->email = $user->email;
-        $mail->username = $user->username;
-        $mail->verification_code = $user->verification_code;
-        $mail->save();
+        session()->put('user', $user);
 
-        return view('auth.success');
+        return to_route('home')->with('message', 'Welcome to Influencers Network');
+
+//        $mail = new RegistrationMail();
+//        $mail->email = $user->email;
+//        $mail->username = $user->username;
+//        $mail->verification_code = $user->verification_code;
+//        $mail->save();
+
+//        return view('auth.success');
     }
 
     public function verifyRegistration($username, $code)
