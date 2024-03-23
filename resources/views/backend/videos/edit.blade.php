@@ -5,45 +5,37 @@
         <div class="col-md-8 offset-md-2">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="text-center"><small>Title: </small>{{$blog->title}}</h4>
+                    <h4 class="text-center"><small>Title: </small>{{$blog->name}}</h4>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{route('posts.update', $blog->id)}}">
+                    <form method="post" action="{{route('videos.update', $blog->id)}}">
                         @csrf
                         @method('PATCH')
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <label for="">Blog Title</label>
-                                    <input type="text" class="form-control" name="title" value="{{$blog->title}}" placeholder="Blog Title" required>
+                                    <label for="">Video Title</label>
+                                    <input type="text" class="form-control" name="title" value="{{$blog->name}}" placeholder="Video Title" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="">Blog Type</label>
-                                    <select name="blog_type" class="form-control" disabled>
-                                        <option value="">--Select Type--</option>
-                                        <option {{($blog->type == 'text') ? 'selected' : ''}} value="text">Article Blog</option>
-                                        <option {{($blog->type == 'audio') ? 'selected' : ''}} value="audio">Audio Blog</option>
+                                    <label for="">Video Status</label>
+                                    <select name="status" class="form-control" >
+                                        <option value="">--Set Status--</option>
+                                        <option {{($blog->status == 'active') ? 'selected' : ''}} value="active">Active</option>
+                                        <option {{($blog->status == 'inactive') ? 'selected' : ''}} value="inactive">Inactive</option>
                                     </select>
                                 </div>
                             </div>
 
-                            @if($blog->type == 'text')
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="">Content</label>
-                                    <textarea name="post_body" class="summernote" required>{{$blog->content}}</textarea>
-                                </div>
-                            </div>
-                            @endif
 
 
                         </div>
 
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-dark fa-pull-right"><i class="fa fa-save"></i> Update Post</button>
+                                <button class="btn btn-dark fa-pull-right"><i class="fa fa-save"></i> Update Video</button>
                             </div>
                         </div>
 
