@@ -32,7 +32,7 @@ class User extends Model
     public function level()
     {
         $id = session('user.id');
-        $referral = User::where('referral_id',$id)->get();
+        $referral = Download::where('user_id',$id)->get();
         $referrals = $referral->count();
         if ($referrals >= '10000')
             return  'VIP';

@@ -128,6 +128,7 @@
                                         <div class="media-body text-white">
                                             <p class="mb-1">Welcome</p>
                                             <h3 class="text-white"> {{ucwords(session('user')->name)}}</h3>
+                                            <button class="badge" style="color: #b28c41"><i class="fa fa-crown" ></i> {{strtoupper(session('user')->level() . ' INFLUENCER')}}</button>
 
                                         </div>
                                     </div>

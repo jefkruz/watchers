@@ -74,7 +74,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Select Image</label>
-                                    <input type="file" name="file" class="form-control" accept="image/*" required>
+                                    <input type="file" name="file" class="form-control"  required>
                                 </div>
                             </div>
                             <div class="col-md-12">

@@ -35,14 +35,17 @@ class MeetingsController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             'title' => 'required',
-            'file' => 'required|file',
+            'file' => 'required|mimes:jpeg,png,pdf,doc,docx,jpg,gif,svg|max:5048',
             'accessibility' => 'required',
             'stream_link' => 'required',
             'start_date' => 'required',
             'end_date' => 'required'
         ]);
+
+
 
         $filePath = $request->file('file')->store('meetings', env('DEFAULT_DISK'));
 

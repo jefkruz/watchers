@@ -75,7 +75,7 @@
                         <a class="nav-link" href="" role="button" data-bs-toggle="dropdown">
                             <div class="header-info">
                                 <span class="text-black">{{ucwords(session('user.name'))}}</span>
-                                <p class="fs-12 mb-0">{{strtoupper('INFLUENCER')}}</p>
+                                <p  style="color: #b28c41" class="fs-12 mb-0"><strong><i class="fa fa-crown" ></i>  {{strtoupper(session('user')->level() . ' INFLUENCER')}}</strong></p>
                             </div>
 
                             @if(session('user')->avatar != '')
