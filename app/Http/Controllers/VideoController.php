@@ -96,7 +96,7 @@ class VideoController extends Controller
     {
         $data['notifications'] = WebNotificationsController::fetchLatestNotifications();
         $data['page_title'] = 'Videos';
-        $data['videos'] = Video::all();
+        $data['videos'] = Video::latest('created_at')->get();
         return view('influencers.videos', $data);
     }
 
