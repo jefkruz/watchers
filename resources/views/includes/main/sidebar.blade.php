@@ -14,10 +14,15 @@
                   <i class="fas fa-book-open"></i>
                   <span class="nav-text"> Magazine</span>
               </a>
-        </li>
+           </li>
             <li><a href="{{route('meetings')}}" class="ai-icon" aria-expanded="false">
                     <i class="fas fa-play-circle"></i>
                     <span class="nav-text">Programmes</span>
+                </a>
+            </li>
+            <li><a href="{{route('videos')}}" class="ai-icon" aria-expanded="false">
+                    <i class="fas fa-video-slash"></i>
+                    <span class="nav-text">Videos</span>
                 </a>
             </li>
             <li><a href="{{route('myCourses')}}" class="ai-icon" aria-expanded="false">

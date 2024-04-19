@@ -81,6 +81,25 @@ class VideoController extends Controller
     }
 
 
+    public function viewVideo($id, $slug)
+    {
+        $data['notifications'] = WebNotificationsController::fetchLatestNotifications();
+        $video = Video::whereIdAndSlug($id, $slug)->firstOrFail();
+
+        $data['page_title'] = $video->name;
+
+        $data['video'] = $video;
+        return view('influencers.watch_video', $data);
+    }
+
+    public function showVideos()
+    {
+        $data['notifications'] = WebNotificationsController::fetchLatestNotifications();
+        $data['page_title'] = 'Videos';
+        $data['videos'] = Video::all();
+        return view('influencers.videos', $data);
+    }
+
     public function destroy($id)
     {
         //
