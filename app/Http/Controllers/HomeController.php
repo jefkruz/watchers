@@ -329,7 +329,7 @@ class HomeController extends Controller
         $data['notifications'] = WebNotificationsController::fetchLatestNotifications();
 
         $videos = Video::where('name', 'like', '%' . $request->q . '%')->get();
-        $data['page_title'] = 'Searching for: ' . $request->q;
+        $data['page_title'] = 'Results for: ' . $request->q;
         $data['videos'] = $videos;
         return view('influencers.search', $data);
 
