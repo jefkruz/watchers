@@ -122,7 +122,7 @@ Route::group(['middleware' => 'isLoggedIn'], function() {
     Route::get('posts', [ResourcesController::class, 'showResources'])->name('showResources');
     Route::get('videos', [VideoController::class, 'showVideos'])->name('videos');
     Route::get('post/view/{id}/{slug}', [ResourcesController::class, 'viewResource'])->name('viewResource');
-    Route::get('video/view/{id}/{slug}', [VideoController::class, 'viewVideo'])->name('viewVideo');
+    Route::get('videos/{id}/{slug}', [VideoController::class, 'viewVideo'])->name('viewVideo');
     Route::post('post/view/{id}/{slug}', [ResourcesController::class, 'addComment']);
     Route::get('magazine', [HomeController::class, 'magazine'])->name('magazine');
     Route::get('programmes', [MeetingsController::class, 'showMeetings'])->name('meetings');
