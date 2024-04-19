@@ -55,7 +55,7 @@
                                     @csrf
                                     <div class="input-group">
                                         <input class="form-control" type="search"  name="q" style="border: 2px solid #b28c41;  border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important; padding: 20px" placeholder="Search Here" required>
-                                        <button class="btn btn-primary" type="button"><i class="fa fa-search"></i> </button>
+                                        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> </button>
 
                                     </div>
                                 </form>
