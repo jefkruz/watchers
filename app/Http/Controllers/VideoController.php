@@ -65,6 +65,8 @@ class VideoController extends Controller
         Video::where('status', 'active')->update(['status' => 'Inactive']);
         $video = new Video();
         $video->name = $request->title;
+        $video->description = $request->description;
+        $video->slug = Str::slug($request->title);
         $video->status ='active';
 
 

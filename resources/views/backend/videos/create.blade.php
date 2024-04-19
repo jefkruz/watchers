@@ -16,7 +16,12 @@
                             </div>
                         </div>
 
-
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Description</label>
+                                <textarea name="description" class="summernote"></textarea>
+                            </div>
+                        </div>
 
                         <div  class="col-md-12" >
                             <div class="form-group">
@@ -43,8 +48,13 @@
     </div>
 @endsection
 
-
+@section('style')
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+@endsection
 
 @section('script')
-
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $('.summernote').summernote();
+    </script>
 @endsection

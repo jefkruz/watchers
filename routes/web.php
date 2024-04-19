@@ -115,6 +115,7 @@ Route::group(['middleware' => 'isLoggedIn'], function() {
 
     Route::get('/', [HomeController::class, 'index']);
     Route::get('home', [HomeController::class, 'index'])->name('home');
+    Route::get('search', [HomeController::class, 'search'])->name('search');
     Route::get('notifications', [HomeController::class, 'notifications'])->name('notifications');
     Route::post('save/token', [HomeController::class, 'saveToken'])->name('saveToken');
 //    Route::get('information', [ResourcesController::class, 'info'])->name('info');
