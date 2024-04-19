@@ -334,4 +334,14 @@ class HomeController extends Controller
         return view('influencers.search', $data);
 
     }
+
+    public function readMagazine($id)
+    {
+        $data['notifications'] = WebNotificationsController::fetchLatestNotifications();
+        $data['magazine'] = Magazine::find($id);
+        $data['page_title'] = 'Read Magazine';
+
+        return view('influencers.read_magazine', $data);
+
+    }
 }
