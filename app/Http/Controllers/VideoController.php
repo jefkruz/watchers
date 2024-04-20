@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Video;
+use App\Models\VideoComment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -98,6 +99,42 @@ class VideoController extends Controller
         $data['page_title'] = 'Videos';
         $data['videos'] = Video::latest('created_at')->get();
         return view('influencers.videos', $data);
+    }
+
+    public function viewDocumentary($id, $slug)
+    {
+        $video = Video::whereIdAndSlug($id, $slug)->firstOrFail();
+
+        $data['page_title'] = $video->name;
+
+        $data['video'] = $video;
+        return view('influencers.watch_video', $data);
+    }
+
+    public function showDocumentary()
+    {
+        $data['page_title'] = 'Videos';
+        $data['videos'] = Video::latest('created_at')->get();
+        return view('influencers.videos', $data);
+    }
+
+    public function addComment($id, $slug, Request $request)
+    {
+        $request->validate([
+            'comment' => 'required'
+        ]);
+        $video = Video::whereIdAndSlug($id, $slug)->firstOrFail();
+        $user = Session::get('user');
+
+        $comment = new VideoComment();
+        $comment->video_id = $video->id;
+        $comment->user_id = $user->id;
+        $comment->name = $user->name;
+        $comment->picture = $user->image;
+        $comment->comment = $request->comment;
+        $comment->save();
+
+        return back();
     }
 
     public function destroy($id)

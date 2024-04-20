@@ -18,7 +18,7 @@
 
                                       <a  href="{{asset($magazine->file)}}" download="{{$magazine->file}}" class="btn btn-rounded btn-warning"><span class="btn-icon-start text-warning"><i class="fa fa-download color-warning"></i>
                                     </span>Download</a>
-                            <a href="{{route('readMagazine',$magazine->id)}}" class="btn btn-rounded"><i class="fa fa-book-open"></i> Read Magazine </a>
+{{--                            <a href="{{route('readMagazine',$magazine->id)}}" class="btn btn-rounded"><i class="fa fa-book-open"></i> Read Magazine </a>--}}
 
                         </div>
                     </div>

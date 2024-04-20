@@ -74,7 +74,9 @@ Route::post('{campus}/signin',  [AuthController::class, 'signin']);
 Route::get('{zone}/signup',  [AuthController::class, 'showZoneSignIn'])->name('zoneSignin');
 Route::post('{zone}/signup',  [AuthController::class, 'signin']);
 
+Route::get('documentary', [VideoController::class, 'showDocumentary'])->name('documentary');
 
+Route::get('documentary/{id}/{slug}', [VideoController::class, 'viewDocumentary'])->name('viewDocumentary');
 
 Route::group(['prefix' => 'ajax'], function(){
     Route::get('chats', [ChatsController::class, 'fetchChats'])->name('fetchChats');
