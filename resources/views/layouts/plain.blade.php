@@ -217,6 +217,15 @@
 
         @include('includes.main.scripts')
         @yield('script')
+    <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MDGXJTZL0L"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-MDGXJTZL0L');
+        </script>
         </body>
 </html>
 
