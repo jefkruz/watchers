@@ -21,7 +21,7 @@
                             <h5 class="card-title">{{$video->name}}</h5>
 
                     </div>
-                    <a href="{{route('viewVideo', [$video->id, $video->slug])}}">
+                    <a href="{{route('viewDocumentary', [$video->id, $video->slug])}}">
                         <img src="{{url('video/video.jpeg')}}" class="img-thumbnail" alt="">
                     </a>
 
@@ -30,7 +30,7 @@
 
                     </div>
                     <div class="card-footer">
-                        <a  href="{{route('viewVideo', [$video->id, $video->slug])}}" class="btn btn-primary btn-sm btn-block"><i class="fa fa-tv"></i> Watch Video</a>
+                        <a  href="{{route('viewDocumentary', [$video->id, $video->slug])}}" class="btn btn-primary btn-sm btn-block"><i class="fa fa-tv"></i> Watch Video</a>
 
                     </div>
                 </div>
