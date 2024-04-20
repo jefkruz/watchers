@@ -108,14 +108,14 @@ class VideoController extends Controller
         $data['page_title'] = $video->name;
 
         $data['video'] = $video;
-        return view('influencers.watch_video', $data);
+        return view('influencers.watch_documentary', $data);
     }
 
     public function showDocumentary()
     {
         $data['page_title'] = 'Videos';
         $data['videos'] = Video::latest('created_at')->get();
-        return view('influencers.videos', $data);
+        return view('influencers.documentary', $data);
     }
 
     public function addComment($id, $slug, Request $request)
