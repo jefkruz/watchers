@@ -163,7 +163,7 @@
                     </a>
                 </li>
 
-                <li><a href="{{route('videos')}}" class="ai-icon" aria-expanded="false">
+                <li><a href="{{route('documentary')}}" class="ai-icon" aria-expanded="false">
                         <i class="fas fa-video-slash"></i>
                         <span class="nav-text">Documentaries</span>
                     </a>
