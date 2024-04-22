@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-6">
             <div class="card">
                 @if($resource->image)
                 <img src="{{url($resource->image)}}" class="card-img-top" alt="img">
@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="col-md-8 offset-md-2">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">Comments</div>

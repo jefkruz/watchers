@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class VideoComment extends Model
 {
     use HasFactory;
+
 }

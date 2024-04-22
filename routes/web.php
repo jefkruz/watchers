@@ -75,7 +75,6 @@ Route::get('{zone}/signup',  [AuthController::class, 'showZoneSignIn'])->name('z
 Route::post('{zone}/signup',  [AuthController::class, 'signin']);
 
 Route::get('documentary', [VideoController::class, 'showDocumentary'])->name('documentary');
-
 Route::get('documentary/{id}/{slug}', [VideoController::class, 'viewDocumentary'])->name('viewDocumentary');
 
 Route::group(['prefix' => 'ajax'], function(){
@@ -126,6 +125,7 @@ Route::group(['middleware' => 'isLoggedIn'], function() {
     Route::get('post/view/{id}/{slug}', [ResourcesController::class, 'viewResource'])->name('viewResource');
     Route::get('videos/{id}/{slug}', [VideoController::class, 'viewVideo'])->name('viewVideo');
     Route::post('post/view/{id}/{slug}', [ResourcesController::class, 'addComment']);
+    Route::post('videos/{id}/{slug}', [VideoController::class, 'addComment']);
     Route::get('magazine', [HomeController::class, 'magazine'])->name('magazine');
     Route::get('magazine/read/{id}', [HomeController::class, 'readMagazine'])->name('readMagazine');
     Route::get('programmes', [MeetingsController::class, 'showMeetings'])->name('meetings');
@@ -280,6 +280,7 @@ Route::group(['middleware' => 'isAdmin', 'prefix' => 'pilot'], function(){
 
 
 });
+
 Route::get('clear', function() {
     Artisan::call('cache:clear');
 
