@@ -58,6 +58,44 @@ class ResourcesController extends Controller
 
         return back();
     }
+    public function viewArticle($id, $slug)
+    {
+        $resource = ResourcePost::whereIdAndSlug($id, $slug)->firstOrFail();
+
+        $data['page_title'] = $resource->title;
+
+        $data['resource'] = $resource;
+        return view('influencers.view_article', $data);
+    }
+
+    public function showArticle()
+    {
+        $data['page_title'] = 'Articles';
+        $data['resources'] = ResourcePost::latest('created_at')->get();
+        return view('influencers.article', $data);
+    }
+
+    public function addArticleComment( Request $request)
+    {
+        $request->validate([
+            'comment' => ['required', 'regex:/^[^<>]*$/'],
+            'id'=>'required',
+            'slug'=>'required',
+        ],
+            [
+            'comment.regex' => 'The comment must not contain HTML or script tags.'
+        ]);
+        $post = ResourcePost::whereIdAndSlug($request->id, $request->slug)->firstOrFail();
+
+        $comment = new ResourceComment();
+        $comment->resource_id = $post->id;
+        $comment->name = $request->name;
+        $comment->picture = url('avatar/default.png');
+        $comment->comment = $request->comment;
+        $comment->save();
+
+        return back();
+    }
 
     public function edit($id)
     {

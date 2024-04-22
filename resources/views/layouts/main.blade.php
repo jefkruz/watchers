@@ -199,12 +199,7 @@
             console.log('Error getting Firebase registration token: ', error);
         });
     </script>
-    <script>
-        const ps5 = new PerfectScrollbar('#commentList', {
-            useBothWheelAxes: true,
-            suppressScrollX: true
-        });
-    </script>
+
     @include('includes.main.scripts')
         @yield('script')
         </body>

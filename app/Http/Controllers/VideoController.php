@@ -122,7 +122,8 @@ class VideoController extends Controller
     {
         $request->validate([
             'comment' => ['required', 'regex:/^[^<>]*$/'], // Disallow '<' and '>' characters
-        ], [
+        ],
+            [
             'comment.regex' => 'The comment must not contain HTML or script tags.'
         ]);
         $video = Video::whereIdAndSlug($id, $slug)->firstOrFail();
@@ -133,6 +134,30 @@ class VideoController extends Controller
         $comment->user_id = $user->id;
         $comment->name = $user->name;
         $comment->picture = $user->image;
+        $comment->comment = $request->comment;
+        $comment->save();
+
+        return back();
+    }
+
+    public function addDocumentaryComment( Request $request)
+    {
+
+        $request->validate([
+            'comment' => ['required', 'regex:/^[^<>]*$/'],
+            'id'=>'required',
+            'slug'=>'required',
+        ], [
+            'comment.regex' => 'The comment must not contain HTML or script tags.'
+        ]);
+
+        $video = Video::whereIdAndSlug($request->id, $request->slug)->firstOrFail();
+
+
+        $comment = new VideoComment();
+        $comment->video_id = $video->id;
+        $comment->name = $request->name;
+        $comment->picture = url('avatar/default.png');
         $comment->comment = $request->comment;
         $comment->save();
 
