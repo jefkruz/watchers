@@ -11,13 +11,14 @@
             </button>
         </div>
     @else
-
-        @foreach($videos as $video)
+        @if($videos)
             <div class="row">
                 <h3 class="card-title mb-5">Video {{$page_title}}</h3>
 
 
-                <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+             @foreach($videos as $video)
+
+                    <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">{{$video->name}}</h5>
@@ -29,14 +30,15 @@
                         </div>
                     </div>
                 </div>
-            </div>
             @endforeach
+            </div>
+        @endif
 
-
+        @if($posts)
+            <div class="row">
+                <h3 class="card-title mb-5">Article {{$page_title}}</h3>
 
             @foreach($posts as $post)
-                <div class="row">
-                    <h3 class="card-title mb-5">Article {{$page_title}}</h3>
 
                 <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
                     <a href="{{route('viewResource', [$post->id, $post->slug])}}">
@@ -70,8 +72,10 @@
                     </a>
 
                 </div>
-                </div>
+
             @endforeach
+            </div>
+        @endif
 
     @endif
 @endsection
