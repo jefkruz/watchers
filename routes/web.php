@@ -78,7 +78,7 @@ Route::get('documentary', [VideoController::class, 'showDocumentary'])->name('do
 Route::get('documentary/{id}/{slug}', [VideoController::class, 'viewDocumentary'])->name('viewDocumentary');
 Route::post('documentary/comment', [VideoController::class, 'addDocumentaryComment'])->name('addDocumentaryComment');
 
-Route::get('article', [ResourcesController::class, 'showArticle'])->name('articles');
+Route::get('articles', [ResourcesController::class, 'showArticle'])->name('articles');
 Route::get('article/{id}/{slug}', [ResourcesController::class, 'viewArticle'])->name('viewArticle');
 Route::post('article/comment', [ResourcesController::class, 'addArticleComment'])->name('addArticleComment');
 
