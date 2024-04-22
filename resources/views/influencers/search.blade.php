@@ -11,7 +11,7 @@
             </button>
         </div>
     @else
-        @if($videos)
+        @if($videos && $posts->count() == 0)
             <div class="row">
                 <h3 class="card-title mb-5">Video {{$page_title}}</h3>
 
@@ -34,7 +34,7 @@
             </div>
         @endif
 
-        @if($posts)
+        @if($posts && $videos->count() == 0)
             <div class="row">
                 <h3 class="card-title mb-5">Article {{$page_title}}</h3>
 
