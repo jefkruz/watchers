@@ -133,6 +133,7 @@ class VideoController extends Controller
         $comment->video_id = $video->id;
         $comment->user_id = $user->id;
         $comment->name = $user->name;
+        $comment->email = $user->email;
         $comment->picture = $user->image;
         $comment->comment = $request->comment;
         $comment->save();
@@ -157,6 +158,7 @@ class VideoController extends Controller
         $comment = new VideoComment();
         $comment->video_id = $video->id;
         $comment->name = $request->name;
+        $comment->email = $request->email;
         $comment->picture = url('avatar/default.png');
         $comment->comment = $request->comment;
         $comment->save();

@@ -52,6 +52,7 @@ class ResourcesController extends Controller
         $comment->resource_id = $post->id;
         $comment->user_id = $user->id;
         $comment->name = $user->name;
+        $comment->email = $user->email;
         $comment->picture = $user->image;
         $comment->comment = $request->comment;
         $comment->save();
@@ -90,6 +91,7 @@ class ResourcesController extends Controller
         $comment = new ResourceComment();
         $comment->resource_id = $post->id;
         $comment->name = $request->name;
+        $comment->email = $request->email;
         $comment->picture = url('avatar/default.png');
         $comment->comment = $request->comment;
         $comment->save();

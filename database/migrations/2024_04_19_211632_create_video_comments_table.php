@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('video_id');
             $table->integer('user_id')->nullable();
             $table->string('name');
+            $table->string('email')->nullable();
             $table->string('picture')->nullable();
             $table->text('comment');
             $table->timestamps();

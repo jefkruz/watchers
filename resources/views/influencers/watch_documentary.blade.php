@@ -67,6 +67,11 @@
                                 <input type="text" class="form-control" name="name"  required >
 
                             </div>
+                        <div class="form-group">
+                            <label class="mb-1"><strong>Email Address</strong></label>
+                            <input type="email" class="form-control" name="email">
+
+                        </div>
 
                             <div class="form-group">
                                 <label class="mb-1"><strong>Comment<span class="text-danger">*</span></strong></label>
