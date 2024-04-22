@@ -168,6 +168,11 @@
                         <span class="nav-text">Documentaries</span>
                     </a>
                 </li>
+                <li><a href="{{route('articles')}}" class="ai-icon" aria-expanded="false">
+                        <i class="fas fa-newspaper"></i>
+                        <span class="nav-text">Articles</span>
+                    </a>
+                </li>
 
 
 
