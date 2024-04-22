@@ -121,7 +121,9 @@ class VideoController extends Controller
     public function addComment($id, $slug, Request $request)
     {
         $request->validate([
-            'comment' => 'required'
+            'comment' => ['required', 'regex:/^[^<>]*$/'], // Disallow '<' and '>' characters
+        ], [
+            'comment.regex' => 'The comment must not contain HTML or script tags.'
         ]);
         $video = Video::whereIdAndSlug($id, $slug)->firstOrFail();
         $user = Session::get('user');

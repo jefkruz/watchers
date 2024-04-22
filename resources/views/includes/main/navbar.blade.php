@@ -16,7 +16,7 @@
                             </svg>
                             <div class="pulse-css"></div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end">
+                        <div class="dropdown-menu dropdown-menu-end" id="commentList">
                             <div id="DZ_W_Notification1" class="widget-media dz-scroll p-3 height380 ps">
                                 <ul class="timeline">
                                     @foreach($notifications as $notification)

@@ -41,7 +41,9 @@ class ResourcesController extends Controller
     public function addComment($id, $slug, Request $request)
     {
         $request->validate([
-            'comment' => 'required'
+            'comment' => ['required', 'regex:/^[^<>]*$/'], // Disallow '<' and '>' characters
+        ], [
+            'comment.regex' => 'The comment must not contain HTML or script tags.'
         ]);
         $post = ResourcePost::whereIdAndSlug($id, $slug)->firstOrFail();
         $user = Session::get('user');
